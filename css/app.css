@@ -1,0 +1,11 @@
+.heading_panel{
+    margin-top: 20px;
+}
+
+.tb_link{
+    text-decoration: none;
+    color: #0f0f0f;
+}
+.tb_link:hover{
+    text-decoration: none;
+}
