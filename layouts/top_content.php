@@ -33,8 +33,18 @@
 
 <body>
 <?php
+session_start();
+
+if($_SESSION['user'] == "root"){
+$user = $_SESSION['user'];
+$password = "";
+} else{
+$user = $_SESSION['user'];
+$password = $_SESSION['password'];    
+}
+
 include("connection.php");
-$connection = new Connection("localhost", "root", "");
+$connection = new Connection("localhost", $user, $password);
 $link = $connection->con;
 $dbs = mysqli_query($link, "show databases");
 
@@ -55,7 +65,16 @@ if(isset($_GET['dbname'])){
     $table_name="null";
 }
 ?>
-
+<div class="row">
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">User Info</div>
+            <div class="panel-body">
+                <?php echo$user; ?>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="wrapper container">
     <div class="row">
         <div class="col-md-4">
@@ -106,6 +125,11 @@ if(isset($_GET['dbname'])){
                                 <i class="fa fa-btn fa-trash"></i> delete
                             </button>
                         </form>
+                    </div>
+                    <div class="panel-footer">
+                        <a class="btn btn-default" href="logout.php">
+                            <i class="fa fa-btn fa-sign-out"></i> Logout
+                        </a>
                     </div>
                 </div>
             </div>

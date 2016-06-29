@@ -12,7 +12,7 @@ class Connection {
     function Connection($host, $user, $password){
         $this->con = mysqli_connect($host, $user, $password);
         if(!$this->con) {
-            die("sorry :(  can not connect to the database");
+            die("sorry :(  can not connect to the server");
         }
     }
 
